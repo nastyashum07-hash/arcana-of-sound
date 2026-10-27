@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>Wheel of Fortune · Living Tarot</title
+  ><meta
+    name="description"
+    content="Живое колесо судьбы — музыкальный ритуал на 180 секунд"
+  /><link
+    rel="preload"
+    href="assets/fonts/URWBookman-Demi.otf"
+    as="font"
+    type="font/otf"
+    crossorigin
+  /><link rel="stylesheet" href="style.css?v=30" />
+  <body>
+    <main id="stage">
+      <div id="sky"></div>
+      <div class="cloud c1"><i class="sprite cloud-art"></i></div>
+      <div class="cloud c2"><i class="sprite cloud-art"></i></div>
+      <div class="cloud c3"><i class="sprite cloud-art"></i></div>
+      <div class="cloud c4"><i class="sprite cloud-art"></i></div>
+      <header>
+        <button id="helpBtn" title="Книга знаков" aria-label="Как играть">
+          ✧
+        </button>
+      </header>
+      <div id="intro">
+        <div class="roman">X</div>
+        <div class="intro-sphinx sprite sphinx-art"></div>
+        <p id="introText"></p>
+      </div>
+      <section id="instrument" aria-label="Синтезатор">
+        <div id="controls"></div>
+        <div id="wheelShell">
+          <div id="wheelArt">
+            <svg viewBox="0 0 400 400" aria-hidden="true">
+              <defs>
+                <radialGradient id="ochre">
+                  <stop stop-color="#ffb13b" />
+                  <stop offset="1" stop-color="#f57b0b" />
+                </radialGradient>
+                <pattern
+                  id="engraving"
+                  width="4"
+                  height="4"
+                  patternUnits="userSpaceOnUse"
+                  patternTransform="rotate(38)"
+                >
+                  <path
+                    d="M0 0V4"
+                    stroke="#592c08"
+                    stroke-width=".65"
+                    opacity=".2"
+                  />
+                </pattern>
+              </defs>
+              <circle
+                cx="200"
+                cy="200"
+                r="194"
+                fill="url(#ochre)"
+                stroke="#171b14"
+                stroke-width="6"
+              />
+              <circle
+                cx="200"
+                cy="200"
+                r="134"
+                fill="none"
+                stroke="#171b14"
+                stroke-width="4"
+              />
+              <g
+                class="rim-ink"
+                fill="none"
+                stroke="#171b14"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <g transform="rotate(0 200 200)">
+                  <path
+                    transform="translate(200 38)"
+                    d="M-18-15Q0-16 18-15M0-15L1 17"
+                  />
+                </g>
+                <g transform="rotate(45 200 200)">
+                  <path transform="translate(200 38)" d="M-5-15Q5-17 5-9L2 4" />
+                </g>
+                <g transform="rotate(90 200 200)">
+                  <path
+                    transform="translate(200 38)"
+                    d="M-16 17L0-17L16 17M-11 5L10 5"
+                  />
+                </g>
+                <g transform="rotate(135 200 200)">
+                  <path
+                    transform="translate(200 38)"
+                    d="M-14-14L13-14L13 16M-13-3L-13 16"
+                  />
+                </g>
+                <g transform="rotate(180 200 200)">
+                  <path
+                    transform="translate(200 38)"
+                    d="M-14 17L-14-17L2-17Q16-17 16-6Q16 4 1 4L-14 4M0 4L17 17"
+                  />
+                </g>
+                <g transform="rotate(225 200 200)">
+                  <path transform="translate(200 38)" d="M-6-15L5-14L4 17" />
+                </g>
+                <g transform="rotate(270 200 200)">
+                  <path
+                    transform="translate(200 38)"
+                    d="M0-17C-22-18-23 17 0 17C22 18 23-17 0-17"
+                  />
+                </g>
+                <g transform="rotate(315 200 200)">
+                  <path
+                    transform="translate(200 38)"
+                    d="M-14-14L13-14L13 16M-13-3L-13 16"
+                  />
+                </g>
+              </g>
+              <circle cx="200" cy="200" r="190" fill="url(#engraving)" />
+            </svg>
+          </div>
+          <button
+            id="wheel"
+            aria-label="Вращать колесо: менять ноты, направление мотива и тембр"
+            title="Круг перемен · поворот меняет ноты и тембр; обратный ход разворачивает мотив"
+          ></button>
+          <div id="wheelControls">
+            <svg class="tarot-seal" viewBox="0 0 400 400" aria-hidden="true">
+              <g
+                fill="none"
+                stroke="#171b14"
+                stroke-width="3.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="200" cy="200" r="37" />
+                <path d="M121 121L279 279M121 279L279 121" />
+                <path
+                  d="M118 117L124 123M276 277L282 283M118 283L124 277M276 123L282 117"
+                  stroke-width="5"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+      <nav id="ritual" aria-label="Исполнение">
+        <button
+          id="start"
+          title="Призыв · начать ритуал · пробел"
+          aria-label="Запустить композицию"
+        >
+          ☉</button
+        ><button
+          id="stop"
+          title="Печать тишины · завершить · Esc"
+          aria-label="Завершить"
+        >
+          ◇</button
+        ><button
+          id="demo"
+          title="Вечное возвращение · повторять ритуал"
+          aria-label="Бесконечное проигрывание"
+        >
+          ∞
+        </button>
+      </nav>
+      <div id="notice" role="status"></div>
+      <dialog id="help">
+        <button id="closeHelp" title="Закрыть книгу" aria-label="Закрыть книгу">
+          ×
+        </button>
+        <h1>Три минуты судьбы</h1>
+        <p>
+          <b>☉</b> — запустить композицию на 180 секунд. <b>∞</b> — включить или
+          выключить непрерывное повторение. <b>◇</b> — плавное завершение.
+        </p>
+        <p>
+          <b>0:00–1:05</b> · Зарождение и первая тема: редкие ноты Змеи, затем ответ Анубиса.<br />
+          <b>1:05–1:40</b> · Вторая тема: высокий голос выходит вперёд, низкий становится опорой.<br />
+          <b>1:40–2:30</b> · Диалог и кульминация: голоса чередуются, затем соединяются.<br />
+          <b>2:30–3:00</b> · Возвращение первой темы и мягкое растворение.
+        </p>
+        <p>
+          Нажми прямо на персонажа: змея и Анубис — голоса; ангел —
+          реверберация, орёл — хорус, лев — искажение, бык — задержка. Активные
+          персонажи светятся и движутся. Первый клик запускает звук; повторное
+          нажатие на голос или эффект выключает его.
+        </p>
+        <p>
+          Вращай обод: положение колеса меняет высоты нот и яркость фильтра,
+          обратное вращение разворачивает порядок мотива. Колесо слегка светится
+          в момент звучания ноты. В ручном режиме форму задаёшь ты, без таймера.
+          Нажатие на сфинкса открывает или прикрывает общий фильтр. Четыре
+          символа внутри колеса — атака (сверху), спад (справа), уровень
+          удержания (слева) и затухание (снизу). Нажимай на символ, чтобы
+          увеличить значение; после максимума следующие нажатия уменьшают
+          значение, после минимума — увеличивают. Луна слева внизу — общая
+          громкость: нажимай, чтобы менять громкость; чем ярче белое свечение
+          луны, тем громче звук. Вверху справа: ✶ — судьба. Нажатия меняют
+          значение на 10%; на максимуме направление меняется на уменьшение, на
+          минимуме — на увеличение. Ярче звезда — быстрее и непредсказуемее
+          колесо. В автоисполнении судьба достигает максимума на кульминации и
+          плавно падает к финалу. Ромбы рядом со змеёй и Анубисом — громкость
+          каждого голоса: нажатия меняют значение на 10% вверх и вниз; яркость
+          показывает громкость.
+        </p>
+        <p>
+          Shift + клик — уменьшить параметр звезды, луны, ромбов или символов.
+          Изменение символов слышно на следующих нотах.
+          Пробел — начало/завершение; Z/X — ноты голосов; Esc — завершение.
+          Слушай в наушниках: бас слева, звон справа.
+        </p>
+        <p>
+          Для ручного исполнения начни с персонажа, не с ☉. Судьба меняет
+          мелодию и плотность ритма: низкое значение — редкие ноты, высокое —
+          насыщенная кульминация. Снижай её через Shift + клик для финала.
+        </p>
+      </dialog>
+    </main>
+    <script src="state.js?v=30"></script>
+    <script src="melody.js"></script>
+    <script src="audio.js?v=34"></script>
+    <script src="sequencer.js?v=34"></script>
+    <script src="interface.js?v=34"></script>
+    <script src="animation.js"></script>
+    <script src="app.js?v=32"></script>
+  </body>
+</html>
